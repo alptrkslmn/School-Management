@@ -1,0 +1,22 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}  }    role?: string;  interface JWT {declare module "next-auth/jwt" {}  }    role?: string;  interface User extends DefaultUser {  }    } & DefaultSession["user"];      role?: string;      id?: string;    user: {  interface Session {declare module "next-auth" {import { JWT } from "next-auth/jwt";import { DefaultSession, DefaultUser } from "next-auth";

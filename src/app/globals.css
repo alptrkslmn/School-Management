@@ -1,0 +1,244 @@
+/* stylelint-disable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* stylelint-enable */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 355.7 100% 97.3%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 48 96% 89%;
+    --info: 221 83% 53%;
+    --info-foreground: 210 40% 98%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.5% 48%;
+    --success: 142.1 70.6% 45.3%;
+    --success-foreground: 144.9 80.4% 10%;
+    --warning: 48 96% 89%;
+    --warning-foreground: 38 92% 50%;
+    --info: 217.2 91.2% 59.8%;
+    --info-foreground: 222.2 47.4% 11.2%;
+  }
+}
+
+@layer base {
+  * {
+    /* stylelint-disable-next-line */
+    @apply border-border;
+  }
+  body {
+    /* stylelint-disable-next-line */
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Badge varyasyonları */
+@layer components {
+  .badge-success {
+    @apply bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300;
+  }
+  .badge-destructive {
+    @apply bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300;
+  }
+}
+
+/* Grid pattern background */
+.bg-grid-white {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+.bg-grid-dark {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+/* Layout helpers */
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+/* Custom animations */
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Card hover effects */
+.card-hover {
+  @apply transition-all duration-300 hover:shadow-md;
+}
+
+/* Dashboard Özel Stiller */
+.dashboard-gradient-bg {
+  background: linear-gradient(
+    to bottom right,
+    hsl(var(--background)),
+    hsl(var(--muted))
+  );
+}
+
+/* Kart Efektleri */
+.card {
+  @apply transition-all duration-300 hover:shadow-md;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card-interactive {
+  @apply relative overflow-hidden cursor-pointer;
+}
+
+.card-interactive:after {
+  content: '';
+  @apply absolute inset-0 bg-gradient-to-r from-transparent to-primary/5 opacity-0 transition-opacity duration-300;
+}
+
+.card-interactive:hover:after {
+  @apply opacity-100;
+}
+
+/* Modern Dashboard İçin Özel Bileşen Stilleri */
+.stat-card {
+  @apply flex flex-col gap-2 p-5 rounded-lg border bg-card text-card-foreground shadow-sm;
+}
+
+.stat-card-title {
+  @apply text-sm font-medium text-muted-foreground;
+}
+
+.stat-card-value {
+  @apply text-2xl font-bold;
+}
+
+.stat-card-description {
+  @apply text-xs text-muted-foreground;
+}
+
+/* Animasyon Efektleri */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-in-out;
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Sidebar İyileştirmeleri */
+.sidebar-item {
+  @apply flex items-center gap-3 px-3 py-2 rounded-md transition-colors;
+}
+
+.sidebar-item-active {
+  @apply bg-primary/10 text-primary font-medium;
+}
+
+/* Dashboard Layout Özellikleri */
+.dashboard-container {
+  @apply container mx-auto px-4 py-6;
+}
+
+.grid-layout {
+  @apply grid gap-6;
+}
+
+/* İkon Stilleri */
+.icon-container {
+  @apply h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center;
+}
+
+.icon {
+  @apply h-5 w-5 text-primary;
+}
+
+/* Tablo İyileştirmeleri */
+.data-table {
+  @apply w-full border-collapse;
+}
+
+.data-table th {
+  @apply bg-muted/50 font-medium text-muted-foreground text-left py-3 px-4;
+}
+
+.data-table td {
+  @apply border-b py-3 px-4;
+}
+
+.data-table tr:hover {
+  @apply bg-muted/30;
+}
+
+/* Scrollbar Stillendirme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/30 rounded;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded hover:bg-muted-foreground/30;
+}
