@@ -72,7 +72,7 @@ export default function StudentsPage() {
           </Button>
         </div>
         <Button asChild>
-          <Link href="/students/new">
+          <Link href="/dashboard/students/new">
             <UserPlus className="mr-2 h-4 w-4" />
             Öğrenci Ekle
           </Link>
